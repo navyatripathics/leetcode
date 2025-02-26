@@ -9,13 +9,16 @@ class Solution:
             graph[v].append(u)
         visited=set()
         visited.add(source)
-        def dfs(i):
-            if i==destination:
+        stack=[source]
+        while stack:
+            node=stack.pop()
+            if node==destination:
                 return True
-            for neighbour_node in graph[i]:
-                if neighbour_node not in visited:
-                    visited.add(neighbour_node)
-                    if dfs(neighbour_node):
+            for nei_node in graph[node]:
+                if nei_node not in visited:
+                    visited.add(nei_node)
+                    stack.append(nei_node)
+                    if nei_node==destination:
                         return True
-            return False
-        return dfs(source)
+        return False
+        
