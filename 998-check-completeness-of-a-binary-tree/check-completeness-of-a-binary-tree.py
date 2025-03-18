@@ -9,7 +9,7 @@ class Solution:
         while q:
             node = q.popleft()
 
-            if not node:
+            if node is None:
                 flag = True
             else:
                 if flag:  
