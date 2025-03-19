@@ -1,18 +1,18 @@
-class Solution:
-    def f(self,index,nums,dp):
-        if (index==0):
-            return nums[0]
-        if index<0:
-            return 0
-        if(dp[index]!=-1):
-            return dp[index]
-        rob=nums[index]+self.f(index-2,nums,dp)
-        notrob=0+self.f(index-1,nums,dp)
-        dp[index]=max(rob,notrob)
-        return dp[index]
+from typing import List
 
+class Solution:
     def rob(self, nums: List[int]) -> int:
-        n=len(nums)
-        dp=[-1]*n
-        return self.f(n-1,nums,dp)
+        n = len(nums)
+        if n == 0:
+            return 0
+        if n == 1:
+            return nums[0]
         
+        dp = [-1] * n
+        dp[0] = nums[0]
+        dp[1] = max(nums[0], nums[1])
+        
+        for i in range(2, n):
+            dp[i] = max(nums[i] + dp[i - 2], dp[i - 1])
+        
+        return dp[-1]
