@@ -1,11 +1,11 @@
-from typing import List
-
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         n = len(triangle)
         dp = [[-1 for _ in range(len(triangle[i]))] for i in range(n)]
 
         def f(i, j):
+            if i>n:
+                return 0
             if i == n - 1:
                 return triangle[i][j]
             if dp[i][j] != -1:
