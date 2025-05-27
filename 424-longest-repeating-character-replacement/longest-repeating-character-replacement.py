@@ -16,4 +16,5 @@ class Solution:
             else:
                 hash[s[left]]-=1
                 left+=1
+                maxf-=1
         return maxlen
