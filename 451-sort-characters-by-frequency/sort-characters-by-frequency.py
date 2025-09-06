@@ -1,13 +1,17 @@
+
 class Solution:
     def frequencySort(self, s: str) -> str:
         d={}
-        m=[]
+        maxheap=[]
         for a in s:
             if a not in d:
                 d[a]=1
             else:
                 d[a]+=1
-        sorted_chars = sorted(d.items(), key=lambda x: x[1], reverse=True)
-        for key,value in sorted_chars:
-            m.append(key*value)
-        return ''.join(m)
+        for key,value in d.items():
+            heapq.heappush(maxheap,(-value,key))
+        m=[]
+        while maxheap:
+            freq,char=heapq.heappop(maxheap)
+            m.append(char*-freq)
+        return "".join(m)
