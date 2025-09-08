@@ -6,8 +6,11 @@ class Solution:
                 d[num]=1
             else:
                 d[num]+=1
-        sorted_d=sorted(d.items(),key=lambda item:item[1],reverse=True)
-        l=[]
+        maxheap=[]
+        a=[]
+        for key,value in d.items():
+            heapq.heappush(maxheap,(-value,key))
         for i in range(k):
-            l.append(sorted_d[i][0])
-        return l
+            freq,num=heapq.heappop(maxheap)
+            a.append(num)
+        return a
