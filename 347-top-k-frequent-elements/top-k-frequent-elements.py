@@ -6,11 +6,11 @@ class Solution:
                 d[num]=1
             else:
                 d[num]+=1
-        maxheap=[]
-        a=[]
+        res=[]
+        heap=[]
         for key,value in d.items():
-            heapq.heappush(maxheap,(-value,key))
+            heapq.heappush(heap,(-value,key))
         for i in range(k):
-            freq,num=heapq.heappop(maxheap)
-            a.append(num)
-        return a
+            freq,val=heapq.heappop(heap)
+            res.append(val)
+        return res
