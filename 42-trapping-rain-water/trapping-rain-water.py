@@ -1,25 +1,20 @@
-from typing import List
-
 class Solution:
     def trap(self, height: List[int]) -> int:
-        n = len(height)
-        if n == 0:
-            return 0
-
-        left = []
-        right = [0] * n
-        lmax = height[0]
-        for i in range(n):
-            lmax = max(lmax, height[i])
-            left.append(lmax)
-
-        rmax = height[n-1]
-        for i in range(n-1, -1, -1):
-            rmax = max(rmax, height[i])
-            right[i] = rmax
-
-        summ = 0
-        for i in range(n):
-            summ += min(left[i], right[i]) - height[i]
-
-        return summ
+        total=0
+        left=0
+        right=len(height)-1
+        lmax,rmax=0,0
+        while left<=right:
+            if height[left]<=height[right]:
+                if height[left]>=lmax:
+                    lmax=height[left]
+                else:
+                    total+=lmax-height[left]
+                left+=1
+            else:
+                if height[right]>=rmax:
+                    rmax=height[right]
+                else:
+                    total+=rmax-height[right]
+                right-=1
+        return total
