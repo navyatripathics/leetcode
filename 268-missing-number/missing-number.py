@@ -1,7 +1,6 @@
-class Solution(object):
-    def missingNumber(self, nums):
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
         n=len(nums)
-        s=set(range(0,n+1))
-        num=set(nums)
-        a=s.difference(num)
-        return a.pop()
+        for i in range(0,n+1):
+            if i not in nums:
+                return i
