@@ -3,10 +3,6 @@ class Solution:
         hash={}
         left=0
         ans=0
-        if not s:
-            return 0
-        if len(s)==1:
-            return 1
         for right in range(len(s)):
             if s[right] not in hash:
                 hash[s[right]]=1
